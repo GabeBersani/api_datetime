@@ -5,6 +5,31 @@ app = Flask(__name__)
 tempo = date.today()
 @app.route('/dia_atual/<dia>-<mes>-<ano>')
 def valores(dia, mes, ano):
+    """
+    API para calcular a diferença entre duas datas (dia, mes e ano)
+
+    ## Endpoint:
+    'GET /dia_atual/<dia>-<mes>-<ano>'
+
+    ## Parâmetros:
+     - 'dia', 'mes', 'ano' **Data no formato "DD/MM/YYYY"** (exemplo: "20-03-2025").
+       - **Qualquer outro formato resultará em erro.**
+
+    ## Resposta (JSON):
+     '''json
+     {
+        "data_atual": "20/03/2025",
+        "data_inserida": "20/03/2025",
+        "diferenca_dias": 0,
+        "diferenca_mes": 0,
+        "diferenca_ano": 0,
+        "status": "presente",
+        }
+
+    ## Erros possíveis:
+    - Se 'dia_atual' não estiver no formato correspondente ao formato "DD/MM/YYYY", retorna erro **400 Bad Request.**
+      '''json
+    """
     try:
         dia= int(dia)
         mes = int(mes)
@@ -42,7 +67,9 @@ def valores(dia, mes, ano):
         })
 
     except ValueError:
-        return  "Data incorreto"
+        return jsonify({"erro": "Data incorreta"})
+    except TypeError:
+        return jsonify({"erro": "Data incorreto"})
 
 
 
