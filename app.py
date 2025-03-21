@@ -17,6 +17,7 @@ def valores(dia, mes, ano):
 
     ## Resposta (JSON):
      '''json
+
      {
         "data_atual": "20/03/2025",
         "data_inserida": "20/03/2025",
