@@ -72,11 +72,6 @@ def valores(dia, mes, ano):
         return jsonify({"erro": "Data incorreto"})
 
 
-
-
-
-
-
     # return jsonify({'message': 'Hello World!'})
 
 if __name__ == '__main__':
